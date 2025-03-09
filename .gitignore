@@ -1,0 +1,43 @@
+def predict_default():
+    print("Ingrese los siguientes datos para calcular SCORE de credito:")
+    seniority = float(input("Seniority: "))
+    age = float(input("Edad: "))
+    income = float(input("Ingresos: "))
+    
+    # Escalar los valores ingresados
+    user_data = scaler.transform([[seniority, age, income]])
+    
+    # Predecir probabilidad
+    prob = clf.predict_proba(user_data)[0, 1]
+    score = 1000*(1-prob)
+    print(f"Score Crediticio: {score:.0f}")
+
+# Llamar a la función para hacer la predicción
+predict_default()
+
+#print(max(data.income))
+#data['income'] = data['income'].replace(0,value=np.nan)
+#data['income'] = data['income'].replace(99999999,value=np.nan)
+
+data.dropna(inplace=True)
+
+#print(data.describe())
+# Cargar los datos (suponiendo que 'data' ya está definido)
+# Convertir la variable objetivo en binaria (1 si es 'default', 0 en caso contrario)
+data['status'] = (data['status'] == 'default').astype(int)
+
+# Ajustar el modelo logit
+logit_model = sm.Logit(y_train, sm.add_constant(X_train)).fit()
+print("Modelo Cargado...\n")
+#print(logit_model.summary())
+
+# Usar scikit-learn para predicciones
+clf = LogisticRegression()
+clf.fit(X_train, y_train)
+
+# Make predictions
+#y_pred_proba = model.predict_proba(X_test_scaled)[:, 1]
+
+# Apply threshold
+#optimal_threshold = 0.28
+#clas_forest_auc = (y_pred_proba >= optimal_threshold).astype(int)
