@@ -8,11 +8,14 @@ The institution needs to reduce credit risk by more accurately assessing the pro
 
 ## Repository Structure
 ```
-├── CreditRisk.csv           # Original dataset
-├── credit_risk_clean.csv    # Preprocessed dataset
-├── random_forest_model.pkl  # Serialized Random Forest model
-├── scaler.pkl               # Serialized StandardScaler
-└── notebooks/               # Jupyter notebooks with analysis
+├── data/  credit_risk_clean.csv                         # Preprocessed dataset      
+├── image/ credit_app.png                                # App screenshoot
+├── notebook/ CreditScoringPrediction.ipynb              # Google colab with the entire code of the project
+├── app.py                                               # Script to deploy Streamlit application
+├── random_forest_model.pkl                              # Serialized Random Forest model
+├── scaler.pkl                                           # Serialized StandardScaler
+├── requirements.txt                                     # Required python libraries to deploy Streamlit application
+
 ```
 
 ## Features
@@ -109,6 +112,8 @@ print(f"Credit Score: {credit_score:.0f}/1000")
 
 ## Deployment on Streamlit App
 - The chosen model ROC-optimized Random Forest classifier is used to deploy on the streamlit app
+- ![](https://github.com/jumacaq/credit_score/blob/master/image/credit_app.png)
+
 
 
 ## Future Improvements
